@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Felicidades, Eva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#2a1fa6; --bg-text:#fff3fa; --paper:#fbf7ff; --ink:#1c1450; --muted:#5b5390; --pop:#ff4f8b; --line:#cfc6f5;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#150f52;--bg-text:#fff3fa;--paper:#231a6b;--ink:#f3eeff;--muted:#b9b0ee;--pop:#ff6b9f;--line:#4a3fa3}
+}
+:root[data-theme="dark"]{--bg:#150f52;--bg-text:#fff3fa;--paper:#231a6b;--ink:#f3eeff;--muted:#b9b0ee;--pop:#ff6b9f;--line:#4a3fa3}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--bg-text);font-family:"Instrument Sans",system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;gap:28px}
+h1{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:clamp(2.6rem,11vw,5rem);line-height:.95;margin:0;text-align:center;letter-spacing:-.02em}
+.sub{margin:0;text-align:center;font-size:1.1rem;max-width:30ch;opacity:.9}
+.ticket{width:100%;max-width:420px;background:var(--paper);color:var(--ink);border-radius:18px;position:relative;transform:rotate(-2deg);box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.main{padding:26px 24px 22px}
+.tag{margin:0;font-weight:600;color:var(--pop);font-size:.95rem}
+.title{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:2rem;line-height:1.05;margin:6px 0 18px}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:.98rem}
+dt{color:var(--muted)} dd{margin:0;font-weight:600}
+.cut{position:relative;border-top:2px dashed var(--line);margin:0 14px}
+.cut::before,.cut::after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:var(--bg)}
+.cut::before{left:-26px}.cut::after{right:-26px}
+.stub{padding:18px 24px 24px;text-align:center}
+button{font:inherit;font-weight:600;font-size:1.05rem;border:0;border-radius:999px;background:var(--pop);color:#fff;padding:14px 28px;cursor:pointer;min-height:48px}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+button:active{transform:scale(.97)}
+.msg{display:none;margin:0;font-size:1.05rem;line-height:1.45}
+.msg strong{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.5rem;display:block;margin-bottom:6px;color:var(--pop)}
+.open .msg{display:block;animation:pop .45s ease-out}
+.open button{display:none}
+@keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.open .msg{animation:none}}
+.fotos{width:100%;max-width:420px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.foto{background:var(--paper);color:var(--muted);padding:8px 8px 26px;border-radius:6px;box-shadow:0 10px 24px rgba(0,0,0,.25);font-size:.8rem;text-align:center}
+.foto:nth-child(1){transform:rotate(-3deg)}.foto:nth-child(2){transform:rotate(2deg) translateY(8px)}.foto:nth-child(3){transform:rotate(-1.5deg)}
+.foto div{aspect-ratio:3/4;border:2px dashed var(--line);border-radius:3px;display:flex;align-items:center;justify-content:center;padding:6px}
+.foto img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:3px}
+.foot{margin:0;font-size:.9rem;opacity:.75;text-align:center}
+body.locked{overflow:hidden;height:100%}
+.espera{position:fixed;inset:0;z-index:99;background:var(--bg);color:var(--bg-text);display:flex;align-items:center;justify-content:center;text-align:center;padding:calc(24px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px))}
+.espera.fuera{display:none}
+.espera-1,.espera-2{display:flex;flex-direction:column;align-items:center;gap:16px}
+.espera-2{display:none}
+.espera.listo .espera-1{display:none}
+.espera.listo .espera-2{display:flex;animation:pop .6s ease-out}
+.dots{display:flex;gap:10px}
+.dots i{width:14px;height:14px;border-radius:50%;background:var(--pop);animation:salto 1.2s ease-in-out infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes salto{0%,80%,100%{transform:translateY(0);opacity:.5}40%{transform:translateY(-14px);opacity:1}}
+.esp-t{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:1.6rem;margin:0}
+.cuenta{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:clamp(2.6rem,14vw,4.5rem);margin:0;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.esp-s{margin:0;opacity:.8}
+.espera-2 h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:clamp(2.4rem,11vw,4.5rem);line-height:1;margin:0;letter-spacing:-.02em}
+@media (prefers-reduced-motion:reduce){.dots i,.espera.listo .espera-2{animation:none}}
+</style>
+</head>
+<body class="locked">
+<div id="espera" class="espera" role="status">
+  <div class="espera-1">
+    <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <p class="esp-t">Preparando una sorpresa…</p>
+    <p class="cuenta" id="cuenta">--:--:--</p>
+    <p class="esp-s">Vuelve a las 0:00</p>
+  </div>
+  <div class="espera-2">
+    <h2>¡Felicidades Ebagons!!! 🫶🏻🫶🏻</h2>
+    <button id="abrir" type="button">Abre tu regalo</button>
+  </div>
+</div>
+<h1 id="hola">¡Felicidades, Eva!</h1>
+<p class="sub">Cumples 20 años, Evuchi.com, y te debía un regalo que todavía no se puede comprar.</p>
+
+<main class="ticket" id="ticket">
+  <div class="main">
+    <p class="tag">Vale de cumpleaños</p>
+    <p class="title">1 entrada para el concierto de C Marí</p>
+    <dl>
+      <dt>Para</dt><dd id="para">Eva (Evuchi.com, Ebagons)</dd>
+      <dt>Fecha</dt><dd>Por confirmar</dd>
+      <dt>Lugar</dt><dd>Por confirmar</dd>
+      <dt>Estado</dt><dd>Entradas aún no a la venta</dd>
+    </dl>
+  </div>
+  <div class="cut"></div>
+  <div class="stub">
+    <button id="canjear" type="button">Canjear mi vale</button>
+    <p class="msg" id="msg"><strong>¡Vale canjeado!</strong>En cuanto salgan a la venta, compro tu entrada. Tú ve guardando la fecha.</p>
+  </div>
+</main>
+<section class="fotos" aria-label="Fotos nuestras">
+  <figure class="foto" style="margin:0"><div>Aquí irá nuestra foto</div></figure>
+  <figure class="foto" style="margin:0"><div>Aquí irá nuestra foto</div></figure>
+  <figure class="foto" style="margin:0"><div>Aquí irá nuestra foto</div></figure>
+</section>
+<p class="foot">20 años, Ebagons. Y los que nos quedan por cantar juntas.</p>
+
+<script>
+(function(){
+  document.getElementById("canjear").addEventListener("click",function(){
+    document.getElementById("ticket").classList.add("open");
+  });
+})();
+(function(){
+  // Fecha y hora de apertura (hora local del que abre la web): año, mes (0=enero), día, hora, minuto
+  var TARGET=new Date(2026,10,4,0,0,0);
+  var ov=document.getElementById("espera"),cd=document.getElementById("cuenta"),t;
+  function pad(n){return String(n).padStart(2,"0")}
+  function tick(){
+    var ms=TARGET-new Date();
+    if(ms<=0){ov.classList.add("listo");clearInterval(t);return}
+    var s=Math.floor(ms/1000);
+    cd.textContent=pad(Math.floor(s/3600))+":"+pad(Math.floor(s%3600/60))+":"+pad(s%60);
+  }
+  t=setInterval(tick,1000);tick();
+  document.getElementById("abrir").addEventListener("click",function(){
+    ov.classList.add("fuera");document.body.classList.remove("locked");
+  });
+})();
+</script>
+</body>
+</html>
